@@ -169,6 +169,15 @@ func unwrapType(homePackage *types.Package, vType types.Type, deps *[]*varPackag
 			qualifier:     codeGenQualifier(homePackage, deps),
 		}
 
+	case *types.Interface:
+		return variable{
+			varPackageDep: nil,
+			Name:          varName,
+			typ:           vTyped,
+			Enabled:       isEnabled(vType),
+			qualifier:     codeGenQualifier(homePackage, deps),
+		}
+
 	case *types.Pointer:
 		res := unwrapType(homePackage, vTyped.Elem(), deps, varName)
 		res.typ = vType

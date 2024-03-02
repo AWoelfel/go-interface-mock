@@ -25,4 +25,7 @@ type Example interface {
 	InterfaceReturn() OInterface
 	PointerReturnA() *string
 	PointerReturnB() *str
+
+	// additional test cases
+	Interface(interface{}) (interface{}, error)
 }

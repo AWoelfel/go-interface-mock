@@ -21,6 +21,23 @@ type ExampleMock struct {
 
 
 
+func (mockInstance *ExampleMock) Interface(_001 interface{}) (interface{}, error){
+	idx, objects := mockInstance.Next(mockInstance.t, "Interface")
+
+	
+		
+	assert.EqualValuesf(mockInstance.t, objects[0], _001, "_001 miss match in call #%d", idx)
+		
+	
+	return  objects[1].(interface{}), utils.ToError(objects[2])
+}
+
+func (mockInstance *ExampleMock) AssertInterfaceCall(_001 interface{}, out002 interface{}, out003 error) {
+	mockInstance.AppendCall("Interface", _001, out002, out003)
+}
+
+
+
 func (mockInstance *ExampleMock) InterfaceMethod(c OInterface){
 	idx, objects := mockInstance.Next(mockInstance.t, "InterfaceMethod")
 
