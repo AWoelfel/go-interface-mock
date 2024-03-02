@@ -253,7 +253,7 @@ func mockSignature(homePackage *types.Package, originalSig *types.Signature, dep
 	processParams(originalSig.Params(), &result.InVars, "_%03d", "%s")
 	processParams(originalSig.Results(), &result.OutVars, "out%03d", "out%s")
 
-	result.Signature = types.NewSignatureType(nil, nil, nil, types.NewTuple(allVars...), nil, originalSig.Variadic())
+	result.Signature = types.NewSignatureType(nil, nil, nil, types.NewTuple(allVars...), nil, false)
 	result.qualifier = codeGenQualifier(homePackage, deps)
 	return
 }

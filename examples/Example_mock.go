@@ -229,3 +229,20 @@ func (mockInstance *ExampleMock) AssertValueMethodCall(a str) {
 }
 
 
+
+func (mockInstance *ExampleMock) Variadic(_001 ...str) error{
+	idx, objects := mockInstance.Next(mockInstance.t, "Variadic")
+
+	
+		
+	assert.EqualValuesf(mockInstance.t, objects[0], _001, "_001 miss match in call #%d", idx)
+		
+	
+	return  utils.ToError(objects[1])
+}
+
+func (mockInstance *ExampleMock) AssertVariadicCall(_001 []str, out002 error) {
+	mockInstance.AppendCall("Variadic", _001, out002)
+}
+
+

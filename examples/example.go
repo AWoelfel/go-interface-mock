@@ -28,4 +28,5 @@ type Example interface {
 
 	// additional test cases
 	Interface(interface{}) (interface{}, error)
+	Variadic(...str) error
 }
